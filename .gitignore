@@ -1,0 +1,8 @@
+py/TVS_Logs/
+py/__pycache__
+py/TVS_Report.txt
+py/guiv3.py
+
+prj/vivado_pid15700.str
+prj/vivado.jou
+prj/vivado.log
