@@ -4,11 +4,11 @@ A bit error rate test for the Total Verification System. Contains the software i
 
 ## Installing ber-tvs
 
-Installing the ber-tvs program is very simple. The TVS  uses Opal Kelly's Front Pannel API and can only communicate with the program if the Front Pannel USB driver is installed. Just pick the latest one from the link bellow
+Installing the ber-tvs program is very simple. The TVS  uses Opal Kelly's Front Pannel API and can only communicate with the program if the Front Pannel USB driver is installed. Just pick the latest one from the link bellow and install:
 
 https://pins.opalkelly.com/downloads
 
-Outside of that the ber-tvs example code utilizes only python with the pandas and numpy libraries installed. Pandas is dependent on numpy so this should be the only python install package:
+Outside of that the ber-tvs example code utilizes only python with the pandas and numpy libraries installed. Pandas is dependent on numpy so this should be the only python install package needed to run the program:
 `pip install pandas`
 
 ## Starting the program
