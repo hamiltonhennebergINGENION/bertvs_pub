@@ -55,13 +55,6 @@ class log_manager():
 		TVSfile.write(f"   Serial Number: {deviceInfo[2]}\n")
 		TVSfile.write(f"       Device ID: {deviceInfo[3]}\n")
 		TVSfile.write(f"--------------------------------------------------------------\n")
-		TVSfile.write("**If all tests are completed they should say passed. \n")
-		TVSfile.write("\n")
-		TVSfile.write("  If errors do occur during a loopback test, or a test case was\n")
-		TVSfile.write("  found unsuccessful for any reason, a debug string will be\n")
-		TVSfile.write("  presented with the format shown bellow:\n")
-		TVSfile.write("\n")
-		TVSfile.write("  Driver| driver pins   Receiver| receiver pins   |Loopback pins   driver[polarity] -> receiver[polarity]\n\n")
 		TVSfile.close()
 
 
@@ -82,6 +75,14 @@ class log_manager():
 		# Check if the log file exists and open it in append mode if it does, otherwise open it in write mode
 		action = 'a' if os.path.exists(self.log_file) else 'w'
 		TVSfile = open(self.log_file, action)
+
+		TVSfile.write("**If all tests are completed they should say passed. \n")
+		TVSfile.write("\n")
+		TVSfile.write("  If errors do occur during a loopback test, or a test case was\n")
+		TVSfile.write("  found unsuccessful for any reason, a debug string will be\n")
+		TVSfile.write("  presented with the format shown below:\n")
+		TVSfile.write("\n")
+		TVSfile.write("  Driver| driver pins   Receiver| receiver pins   |Loopback pins   driver[polarity] -> receiver[polarity]\n\n")
 
 		for connector in self.connectors:
 			connector_signals = self.p_map[self.p_map['Connector'] == connector]
@@ -106,7 +107,7 @@ class log_manager():
 				receiver_pins = debug_format(4,signal[6][3].split(','))
 				loopbacks = debug_format(10,signal[6][4:])
 
-				debug_string = f"\t{driver}| {driver_pins}  {receiver}| {receiver_pins}  |{loopbacks}" 
+				debug_string = f"debug info: \t{driver}| {driver_pins}  {receiver}| {receiver_pins}  |{loopbacks}" 
 
 				if status[signal[1],2] == 0:
 					TVSfile.write(f"   {signal[4]}" + "\t Fail".ljust(15)   + "No test"
@@ -118,7 +119,7 @@ class log_manager():
 					
 				else:
 					TVSfile.write(f"   {signal[4]}" + "\t Fail".ljust(15)   
-								+ f"{io_type}\t{status[signal[1],0]:.4f}"
+								+ f"expected {signal[5]}, got {io_type}\t{status[signal[1],0]:.4f}"
 								+ f"\t\t{debug_string}\n")
 
 		TVSfile.close()
