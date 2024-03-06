@@ -18,6 +18,8 @@ To start the TVS Testing program there are two ways:
 - The easiest way is to execute the `bertvs_gui.py` file from the `BER-TVS` folder in VS Code.
 - Alternatively use the command line, cd to the repository folder, and run `python3 py/bertvs_gui.py`
 
+- If an error occurs while attempting to run bertvs_gui.py saying "ModuleNotFoundError: No Module name '_ok' , navigate to your Frontpanel install directory, go into the API->Python directory, replace the _ok.pyd and ok.py files in the bertvs folder with the files from the Frontpanel directory and try again.
+
 ## TVS Testing Information
 
 Start by entering your name into the Inspector box.
@@ -45,3 +47,5 @@ source py/.venv/bin/activate
 python3 py/bertvs_gui.py
 deactivate
 ```
+
+
